@@ -1,0 +1,38 @@
+.bg-orange {
+  background-color: #ee7e17;
+}
+
+.btn-orange {
+  color: white;
+  background-color: #ee7e17;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #c06714;
+}
+
+.btn-light-orange {
+  color: white;
+  background-color: #ecbb60;
+  border: none;
+}
+
+.btn-light-orange:hover {
+  background-color: #cfa454;
+}
+
+.btn-light-green {
+  color: white;
+  background-color: #45ad57;
+  border: none;
+}
+
+.btn-light-green:hover {
+  background-color: #388a46;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+}

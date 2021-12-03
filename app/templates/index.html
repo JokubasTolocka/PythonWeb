@@ -1,0 +1,47 @@
+{% import 'booksButton.html' as booksButton %}{% extends "base.html" %} {% block
+content %}
+<div>
+  <h2 class="mb-4">Welcome to the Library!</h2>
+  <div class="d-flex flex-column flex-md-row h-100">
+    <div class="flex-grow-1 me-0 me-md-4">
+      <div class="d-block d-md-none">
+        {{ booksButton.renderButton(username) }}
+      </div>
+      {% for b in books %} {% if b.copies > 0 %}
+      <div class="card-body bg-light mb-4">
+        {% if checkIfIHaveTheBook(b.id) == True %}
+        <h6>You have this book on loan</h6>
+        {%endif%}
+        <h4 class="card-title">{{ b.title}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">Author: {{ b.author }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Publish date: {{ b.dateReleased }}
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">Copies: {{ b.copies }}</h6>
+        {% if username != 'admin' and checkIfIHaveTheBook(b.id) == False %} {{
+        form.hidden_tag() }}
+        <form action="" method="post" name="requestForm">
+          {{ form.id(class="d-none", value=b.id) }}
+          <input type="submit" value="Request" class="btn btn-light-orange" />
+        </form>
+        {%endif %}
+      </div>
+      {%endif %} {% endfor %}
+    </div>
+    <div class="flex-grow-1">
+      <div class="d-none d-md-block">
+        {{ booksButton.renderButton(username) }}
+      </div>
+      <div class="w-100 bg-light rounded">
+        <h4 class="ms-3 pt-3 mb-3">Our top users</h4>
+        {% for u in usersSortedByRequests %} {% if u.requests > 0 %}
+        <div class="ms-3 bg-light pb-3">
+          <h5 class="mb-1">Name: {{ u.username}}</h5>
+          <h6 class="text-muted">Requests: {{ u.requests }}</h6>
+        </div>
+        {%endif %} {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

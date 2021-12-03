@@ -1,0 +1,6 @@
+<!-- This is the component for a button -->
+{% macro renderButton(username) -%} {% if username == 'admin' %}
+<a href="/create" class="btn btn-orange w-100 mb-3">Add books</a>
+{% else %}
+<a href="/mybooks" class="btn btn-orange w-100 mb-3">My books</a>
+{%endif %} {%- endmacro %}

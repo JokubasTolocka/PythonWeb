@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h2 class="mb-4">Add a book to the library!</h2>
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+  <form action="" method="post" name="createAssignment" class="mt-4">
+    {{ form.hidden_tag() }}
+    <div class="form-group d-flex flex-column mb-4">
+      <label>Title</label>
+      {{ form.title(class="form-control") }} {% for error in form.title.errors
+      %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="form-group d-flex flex-column mb-4">
+      <label>Author</label>{{ form.author(class="form-control") }} {% for error
+      in form.author.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="form-group d-flex flex-column mb-4">
+      <label>Date released</label>{{ form.dateReleased(class="form-control") }}
+      {% for error in form.dateReleased.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="form-group d-flex flex-column mb-4">
+      <label>Copies</label>{{ form.copies(class="form-range", type="range",
+      min=1, max=10, value=1) }}
+      <div class="d-flex justify-content-between">
+        <small>1</small>
+        <small>5</small>
+        <small>10</small>
+      </div>
+      {% for error in form.copies.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="mt-4 d-flex">
+      <input
+        type="submit"
+        value="Add the book to the libary"
+        class="btn btn-primary mr-0"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %}

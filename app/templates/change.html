@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="form-container">
+  <h2 class="mb-4">Change your password</h2>
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+  <form action="" method="post" name="changePassword" class="mt-4">
+    {{ form.hidden_tag() }}
+    <div class="form-group d-flex flex-column mb-3">
+      <label>Current password</label>
+      {{ form.currentPassword(class="form-control") }} {% for error in
+      form.currentPassword.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="form-group d-flex flex-column mb-3">
+      <label>Password</label>{{ form.password(class="form-control") }} {% for
+      error in form.password.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="form-group d-flex flex-column mb-3">
+      <label>Repeat password</label>{{ form.repeatPassword(class="form-control")
+      }} {% for error in form.repeatPassword.errors %}
+      <small class="form-text text-danger">{{ error }}</small>
+      {% endfor %}
+    </div>
+    <div class="mt-4 d-flex flex-column">
+      <input type="submit" value="Change" class="btn btn-orange mb-2" />
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- My CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>Library</title>
+  </head>
+  <body class="h-100">
+    <nav class="navbar navbar-expand navbar-light bg-orange">
+      <div class="container container-fluid py-2">
+        {% if request.endpoint != 'login' and request.endpoint != 'register'%}
+        <ul class="navbar-nav w-100">
+          <div class="d-flex justify-content-between w-100">
+            <li class="nav-item me-4 my-auto">
+              <a href="/" class="text-light text-decoration-none d-flex">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 6C2 6 3.5 4 7 4C10.5 4 12 6 12 6V20C12 20 10.5 19 7 19C3.5 19 2 20 2 20V6Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M12 6C12 6 13.5 4 17 4C20.5 4 22 6 22 6V20C22 20 20.5 19 17 19C13.5 19 12 20 12 20V6Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <h5 class="ms-2 my-auto">Home</h5></a
+              >
+            </li>
+            <div class="d-flex">
+              <li class="nav-item me-4 my-auto">
+                <a href="/change" class="text-light text-decoration-none"
+                  >Change password</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="btn btn-light">Log out</a>
+              </li>
+            </div>
+          </div>
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+    <div class="container mt-4">{% block content %}{% endblock %}</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

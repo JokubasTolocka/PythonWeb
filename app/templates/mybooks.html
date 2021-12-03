@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h2 class="mb-4">Your books</h2>
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
+    <div class="w-100 h-100">
+      {% for b in books %}
+      <div class="card-body bg-light mb-4">
+        <h4 class="card-title">{{ b.title}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">Author: {{ b.author }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Publish date: {{ b.dateReleased }}
+        </h6>
+        {{ form.hidden_tag() }}
+        <form action="" method="post" name="returnForm">
+          {{ form.id(class="d-none", value=b.id) }}
+          <input type="submit" value="Return" class="btn btn-light-green" />
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

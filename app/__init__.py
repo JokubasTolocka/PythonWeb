@@ -7,7 +7,11 @@ import logging
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-logging.basicConfig(filename='loging.log', encoding='utf-8', level=logging.DEBUG)
+root_logger= logging.getLogger()
+root_logger.setLevel(logging.INFO)
+handler = logging.FileHandler('loging.log', 'w', 'utf-8')
+handler.setFormatter(logging.Formatter('%(name)s %(message)s'))
+root_logger.addHandler(handler)
 
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
